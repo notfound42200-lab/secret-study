@@ -54,9 +54,6 @@ def payment_verify():
     order_id = request.form.get("razorpay_order_id")
     signature = request.form.get("razorpay_signature")
 
-    # Check that this is the order created for this session
-    if order_id != session.get("order_id"):
-        return "Invalid order.", 400
 
     try:
         # Verify the Razorpay signature on the server
