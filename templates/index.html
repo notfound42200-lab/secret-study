@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secreat Study</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #111;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 22px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px 50px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin: 0 0 15px;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.25s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .file-icon {
+            width: 60px;
+            height: 60px;
+            background: #111;
+            color: white;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .product h2 {
+            margin: 0 0 10px;
+            font-size: 22px;
+        }
+
+        .product p {
+            color: #666;
+            line-height: 1.6;
+            min-height: 50px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .buy-btn {
+            display: block;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            text-align: center;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .buy-btn:hover {
+            background: #333;
+        }
+
+        footer {
+            margin-top: 80px;
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 20px 35px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        My File Store
+    </div>
+
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="#products">Products</a>
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Digital Files, Made Simple.</h1>
+
+    <p>
+        Get all videos resources instantly.
+    </p>
+
+</section>
+
+
+<div class="container" id="products">
+
+    <h2 class="section-title">
+        Featured Products
+    </h2>
+
+
+    <div class="products">
+
+        <div class="product">
+
+            <div class="file-icon">
+                📄
+            </div>
+
+            <h2>
+                Secreat Study Video
+            </h2>
+
+            <p>
+                Complete All Video.
+            </p>
+
+            <div class="price">
+                ₹99
+            </div>
+
+            <a href="/buy" class="buy-btn">
+                Buy Now
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 My File Store. All rights reserved.
+
+</footer>
+
+</body>
+</html>
