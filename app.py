@@ -7,7 +7,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-
+@app.route("/favicon.png")
+def favicon():
+    return send_from_directory(
+        os.path.dirname(os.path.abspath(__file__)),
+        "favicon.png",
+        mimetype="image/png"
+    )
 # Flask session secret
 app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
