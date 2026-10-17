@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Secreat Study</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Study</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -24,15 +25,9 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+        .logo { font-size: 24px; font-weight: bold; }
 
-        .nav {
-            display: flex;
-            gap: 25px;
-        }
+        .nav { display: flex; gap: 25px; }
 
         .nav a {
             color: white;
@@ -45,16 +40,9 @@
             padding: 70px 20px 50px;
         }
 
-        .hero h1 {
-            font-size: 45px;
-            margin: 0 0 15px;
-        }
+        .hero h1 { font-size: 45px; margin: 0 0 15px; }
 
-        .hero p {
-            color: #666;
-            font-size: 18px;
-            margin: 0;
-        }
+        .hero p { color: #666; font-size: 18px; margin: 0; }
 
         .container {
             max-width: 1100px;
@@ -62,10 +50,7 @@
             padding: 20px;
         }
 
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 25px;
-        }
+        .section-title { font-size: 28px; margin-bottom: 25px; }
 
         .products {
             display: grid;
@@ -99,10 +84,7 @@
             margin-bottom: 20px;
         }
 
-        .product h2 {
-            margin: 0 0 10px;
-            font-size: 22px;
-        }
+        .product h2 { margin: 0 0 10px; font-size: 22px; }
 
         .product p {
             color: #666;
@@ -110,11 +92,7 @@
             min-height: 50px;
         }
 
-        .price {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
+        .price { font-size: 28px; font-weight: bold; margin: 20px 0; }
 
         .buy-btn {
             display: block;
@@ -128,9 +106,7 @@
             transition: 0.2s;
         }
 
-        .buy-btn:hover {
-            background: #333;
-        }
+        .buy-btn:hover { background: #333; }
 
         footer {
             margin-top: 80px;
@@ -142,100 +118,60 @@
         }
 
         @media (max-width: 600px) {
-
-            header {
-                padding: 20px;
-            }
-
-            .nav {
-                display: none;
-            }
-
-            .hero {
-                padding: 50px 20px 35px;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
+            header { padding: 20px; }
+            .nav { display: none; }
+            .hero { padding: 50px 20px 35px; }
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 16px; }
         }
     </style>
 </head>
 
 <body>
-
 <header>
-
-    <div class="logo">
-        My File Store
-    </div>
-
+    <div class="logo">Secret Study</div>
     <div class="nav">
         <a href="/">Home</a>
         <a href="#products">Products</a>
     </div>
-
 </header>
 
-
 <section class="hero">
-
-    <h1>Digital Files, Made Simple.</h1>
-
-    <p>
-        Get all videos resources instantly.
-    </p>
-
+    <h1>Digital Learning, Made Simple.</h1>
+    <p>Choose your study video package and get access after payment.</p>
 </section>
 
-
 <div class="container" id="products">
-
-    <h2 class="section-title">
-        Featured Products
-    </h2>
-
+    <h2 class="section-title">Choose Your Package</h2>
 
     <div class="products">
-
         <div class="product">
-
-            <div class="file-icon">
-                📄
-            </div>
-
-            <h2>
-                Secreat Study Video
-            </h2>
-
-            <p>
-                Complete All Video.
-            </p>
-
-            <div class="price">
-                ₹99
-            </div>
-
-            <a href="/buy" class="buy-btn">
-                Buy Now
-            </a>
-
+            <div class="file-icon">😈</div>
+            <h2>Instagram Night Studies</h2>
+            <p>Get access to the Secret Study video package.</p>
+            <div class="price">₹99</div>
+            <a href="{{ url_for('buy', product_id='secret-study') }}" class="buy-btn">Buy Now</a>
         </div>
 
-    </div>
+        <div class="product">
+            <div class="file-icon">💦</div>
+            <h2>Teenager Package</h2>
+            <p>Choose the Teenager video package for your night studies.</p>
+            <div class="price">₹199</div>
+            <a href="{{ url_for('buy', product_id='standard') }}" class="buy-btn">Buy Now</a>
+        </div>
 
+        <div class="product">
+            <div class="file-icon">🤤</div>
+            <h2>Premium and Combo</h2>
+            <p>Get access to the All video package by paying only once.</p>
+            <div class="price">₹499</div>
+            <a href="{{ url_for('buy', product_id='premium') }}" class="buy-btn">Buy Now</a>
+        </div>
+    </div>
 </div>
 
-
-<footer>
-
-    © 2026 My File Store. All rights reserved.
-
-</footer>
-
+<footer>© 2026 Secret Study. All rights reserved.</footer>
 </body>
 </html>
+```

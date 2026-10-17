@@ -1,14 +1,15 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Secreat Study</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Study - Checkout</title>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -26,15 +27,9 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+        .logo { font-size: 24px; font-weight: bold; }
 
-        header a {
-            color: white;
-            text-decoration: none;
-        }
+        header a { color: white; text-decoration: none; }
 
         .page {
             min-height: calc(100vh - 70px);
@@ -67,10 +62,7 @@
             margin: 0 auto 22px;
         }
 
-        h1 {
-            margin: 0 0 12px;
-            font-size: 30px;
-        }
+        h1 { margin: 0 0 12px; font-size: 30px; }
 
         .description {
             color: #666;
@@ -103,9 +95,7 @@
             transition: 0.2s;
         }
 
-        .pay-btn:hover {
-            background: #333;
-        }
+        .pay-btn:hover { background: #333; }
 
         .back {
             display: block;
@@ -115,131 +105,82 @@
             font-size: 14px;
         }
 
-        .back:hover {
-            color: #111;
-        }
+        .back:hover { color: #111; }
 
         @media (max-width: 600px) {
-
-            header {
-                padding: 20px;
-            }
-
-            .box {
-                padding: 30px 22px;
-            }
-
-            h1 {
-                font-size: 25px;
-            }
+            header { padding: 20px; }
+            .box { padding: 30px 22px; }
+            h1 { font-size: 25px; }
         }
     </style>
 </head>
 
 <body>
-
 <header>
-
-    <div class="logo">
-        My File Store
-    </div>
-
-    <a href="/">
-        Home
-    </a>
-
+    <div class="logo">Secret Study</div>
+    <a href="/">Home</a>
 </header>
 
-
 <div class="page">
-
     <div class="box">
+        <div class="icon">🎓</div>
 
-        <div class="icon">
-            📄
-        </div>
-
-        <h1>
-            Secreat Study Material
-        </h1>
+        <h1>{{ product.name }}</h1>
 
         <p class="description">
-            Complete all video. Get instant access after successful payment.
+            Get access to your selected study video package after successful payment.
         </p>
 
-        <div class="price">
-            ₹99
-        </div>
+        <div class="price">₹{{ product.price }}</div>
 
-        <div class="secure">
-            🔒 Secure payment powered by Razorpay
-        </div>
+        <div class="secure">🔒 Secure payment powered by Razorpay</div>
 
         <button class="pay-btn" onclick="payNow()">
-            Pay ₹99
+            Pay ₹{{ product.price }}
         </button>
 
-        <a href="/" class="back">
-            ← Back to store
-        </a>
-
+        <a href="/" class="back">← Back to store</a>
     </div>
-
 </div>
-
 
 <script>
 function payNow() {
-
     var options = {
-        "key": "{{ key_id }}",
-        "amount": "{{ amount }}",
-        "currency": "INR",
-        "name": "My File Store",
-        "description": "C Programming Notes",
-        "order_id": "{{ order_id }}",
+        key: {{ key_id | tojson }},
+        amount: {{ amount | tojson }},
+        currency: "INR",
+        name: "Secret Study",
+        description: {{ product.name | tojson }},
+        order_id: {{ order_id | tojson }},
 
-        "handler": function (response) {
-
+        handler: function (response) {
             var form = document.createElement("form");
-
             form.method = "POST";
             form.action = "/payment/verify";
 
-            var paymentId = document.createElement("input");
-            paymentId.type = "hidden";
-            paymentId.name = "razorpay_payment_id";
-            paymentId.value = response.razorpay_payment_id;
-
-            var orderId = document.createElement("input");
-            orderId.type = "hidden";
-            orderId.name = "razorpay_order_id";
-            orderId.value = response.razorpay_order_id;
-
-            var signature = document.createElement("input");
-            signature.type = "hidden";
-            signature.name = "razorpay_signature";
-            signature.value = response.razorpay_signature;
-
-            form.appendChild(paymentId);
-            form.appendChild(orderId);
-            form.appendChild(signature);
+            [
+                ["razorpay_payment_id", response.razorpay_payment_id],
+                ["razorpay_order_id", response.razorpay_order_id],
+                ["razorpay_signature", response.razorpay_signature]
+            ].forEach(function (item) {
+                var input = document.createElement("input");
+                input.type = "hidden";
+                input.name = item[0];
+                input.value = item[1];
+                form.appendChild(input);
+            });
 
             document.body.appendChild(form);
-
             form.submit();
         },
 
-        "theme": {
-            "color": "#111111"
-        }
+        theme: { color: "#111111" }
     };
 
     var rzp = new Razorpay(options);
-
     rzp.open();
 }
 </script>
-
 </body>
 </html>
+```
